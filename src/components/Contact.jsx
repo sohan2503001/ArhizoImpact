@@ -1,16 +1,16 @@
-import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import Reveal from './Reveal';
 
 const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-beige-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden shadow-primary-900/5">
+        <Reveal className="bg-white rounded-3xl shadow-xl overflow-hidden shadow-primary-900/5">
           <div className="flex flex-col lg:flex-row">
-            
+
             {/* Contact Info Side */}
             <div className="w-full lg:w-5/12 bg-primary-900 text-white p-10 md:p-16 flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute top-0 right-0 -tr-20 -mt-20 w-64 h-64 rounded-full bg-primary-600/30 blur-3xl"></div>
+              <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 rounded-full bg-primary-600/30 blur-3xl animate-float-slow"></div>
               
               <div className="relative z-10">
                 <h3 className="text-3xl font-extrabold mb-4 font-heading">Get in touch</h3>
@@ -41,8 +41,8 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-accent-400 mt-1 shrink-0" />
                     <div className="ml-4">
                       <p className="font-semibold text-white">Email</p>
-                      <a href="mailto:rishikeshpawar2207@gmail.com" className="text-primary-100 hover:text-white transition-colors">
-                        rishikeshpawar2207@gmail.com
+                      <a href="mailto:arhizoimpact@gmail.com" className="text-primary-100 hover:text-white transition-colors">
+                        arhizoimpact@gmail.com
                       </a>
                     </div>
                   </div>
@@ -111,17 +111,17 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <button 
-                  type="submit" 
-                  className="w-full bg-primary-600 hover:bg-primary-500 text-white font-medium py-3.5 px-6 rounded-lg transition-colors shadow-md shadow-primary-600/30 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600"
+                <button
+                  type="submit"
+                  className="w-full bg-primary-600 hover:bg-primary-500 text-white font-medium py-3.5 px-6 rounded-lg transition-all duration-300 shadow-md shadow-primary-600/30 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 hover:-translate-y-0.5 hover:shadow-lg"
                 >
                   Let's Collaborate
                 </button>
               </form>
             </div>
-            
+
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

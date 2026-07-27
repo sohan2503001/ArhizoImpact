@@ -35,4 +35,41 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -20px); }
+  }
+  .animate-float {
+    animation: float 9s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float 14s ease-in-out infinite;
+  }
+  .animate-float-delay {
+    animation: float 11s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-beige-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-500);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-600);
 }

@@ -1,9 +1,9 @@
-import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhatIDo from './components/WhatIDo';
 import ImpactSnapshot from './components/ImpactSnapshot';
 import AboutMe from './components/AboutMe';
+import HowWeWork from './components/HowWeWork';
 import Services from './components/Services';
 import CaseStudies from './components/CaseStudies';
 import Contact from './components/Contact';
@@ -18,6 +18,7 @@ function App() {
         <WhatIDo />
         <ImpactSnapshot />
         <AboutMe />
+        <HowWeWork />
         <Services />
         <CaseStudies />
         <Contact />
