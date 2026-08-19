@@ -1,12 +1,25 @@
-import { ArrowRight, ClipboardCheck, FileCheck2, Globe2, Leaf, Route, Target } from 'lucide-react';
+import {
+  ArrowRight,
+  Briefcase,
+  ClipboardCheck,
+  FileCheck2,
+  Globe2,
+  Handshake,
+  Leaf,
+  Network,
+  Route,
+  Search,
+  Target,
+  TrendingUp,
+} from 'lucide-react';
 import Reveal from './Reveal';
 
 const livelihoodFlow = [
-  { label: 'Community Assessment' },
-  { label: 'SHG & FPO Strengthening' },
-  { label: 'Enterprise Incubation' },
-  { label: 'Market & Credit Linkages' },
-  { label: 'Livelihood Outcomes' },
+  { label: 'Community Assessment', icon: Search },
+  { label: 'SHG & FPO Strengthening', icon: Network },
+  { label: 'Enterprise Incubation', icon: Briefcase },
+  { label: 'Market & Credit Linkages', icon: Handshake },
+  { label: 'Livelihood Outcomes', icon: TrendingUp },
 ];
 
 const netZeroRoadmap = [

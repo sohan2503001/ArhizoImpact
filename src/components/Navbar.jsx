@@ -5,7 +5,7 @@ import { NAV_LINKS as navLinks } from '../data/constants';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('#home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,14 +46,14 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 items-center">
+          <div className="hidden md:flex gap-5 lg:gap-7 items-center">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href;
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`relative font-sans font-medium text-sm transition-colors hover:text-accent-500 pb-1 ${
+                  className={`relative font-sans font-medium text-xs lg:text-sm transition-colors hover:text-accent-500 pb-1 whitespace-nowrap ${
                     isActive ? 'text-accent-500' : scrolled ? 'text-slate-700' : 'text-white'
                   }`}
                 >
@@ -66,12 +66,6 @@ const Navbar = () => {
                 </a>
               );
             })}
-            <a
-              href="#contact"
-              className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
-            >
-              Let's Collaborate
-            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -105,13 +99,6 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="block w-full text-center mt-4 bg-primary-600 hover:bg-primary-500 text-white px-5 py-3 rounded-md font-medium text-base transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Let's Collaborate
-          </a>
         </div>
       </div>
     </nav>

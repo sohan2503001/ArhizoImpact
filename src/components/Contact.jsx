@@ -122,6 +122,21 @@ const Contact = () => {
                 </div>
 
                 <div>
+                  <label htmlFor="interest" className="block text-sm font-medium text-slate-700 mb-1">I'm interested in</label>
+                  <select
+                    id="interest"
+                    required
+                    defaultValue=""
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50 focus:bg-white"
+                  >
+                    <option value="" disabled>Select a focus area</option>
+                    <option value="livelihoods">Livelihoods & Enterprise Development</option>
+                    <option value="esg-net-zero">ESG & Net Zero Consulting</option>
+                    <option value="both">Both</option>
+                  </select>
+                </div>
+
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message</label>
                   <textarea 
                     id="message" 

@@ -7,10 +7,12 @@ import {
 
 export const NAV_LINKS = [
   { name: 'Home', href: '#home' },
-  { name: 'What I Do', href: '#what-i-do' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
+  { name: 'Livelihoods', href: '#livelihoods' },
+  { name: 'ESG & Net Zero', href: '#net-zero' },
   { name: 'Case Studies', href: '#case-studies' },
+  { name: 'About', href: '#about' },
+  { name: 'Contact', href: '#contact' },
+  { name: 'Internship', href: '#internship' },
 ];
 
 export const EXPERTISE_SERVICES = [
