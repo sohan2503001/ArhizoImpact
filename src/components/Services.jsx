@@ -66,16 +66,26 @@ const Services = () => {
                 <div className="grid md:grid-cols-2 gap-8">
                   {track.services.map((item, index) => (
                     <Reveal key={item.title} delay={index * 80}>
-                      <div className="group bg-white rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-primary-200 h-full">
-                        <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300`}>
-                          <item.icon size={32} />
+                      <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-primary-200 h-full">
+                        <div className="relative h-44 bg-beige-50 flex items-center justify-center overflow-hidden p-5">
+                          <img
+                            src={item.image}
+                            alt=""
+                            loading="lazy"
+                            className="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className={`absolute top-4 left-4 w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center shadow-sm transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300`}>
+                            <item.icon size={22} />
+                          </div>
                         </div>
-                        <h5 className="font-heading text-2xl font-bold text-slate-900 mb-4">
-                          {item.title}
-                        </h5>
-                        <p className="text-slate-600 leading-relaxed text-lg">
-                          {item.description}
-                        </p>
+                        <div className="p-8 lg:p-10">
+                          <h5 className="font-heading text-2xl font-bold text-slate-900 mb-4">
+                            {item.title}
+                          </h5>
+                          <p className="text-slate-600 leading-relaxed text-lg">
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
                     </Reveal>
                   ))}
