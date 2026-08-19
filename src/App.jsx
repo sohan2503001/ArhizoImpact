@@ -1,10 +1,8 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SectorOverview from './components/SectorOverview';
-import WhatIDo from './components/WhatIDo';
-import ImpactSnapshot from './components/ImpactSnapshot';
+import ESGIntro from './components/ESGIntro';
 import AboutMe from './components/AboutMe';
-import HowWeWork from './components/HowWeWork';
 import Services from './components/Services';
 import CaseStudies from './components/CaseStudies';
 import Internship from './components/Internship';
@@ -18,12 +16,10 @@ function App() {
       <main>
         <Hero />
         <SectorOverview />
-        <WhatIDo />
-        <ImpactSnapshot />
-        <AboutMe />
-        <HowWeWork />
         <Services />
+        <ESGIntro />
         <CaseStudies />
+        <AboutMe />
         <Internship />
         <Contact />
       </main>

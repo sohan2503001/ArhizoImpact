@@ -40,7 +40,7 @@ const Services = () => {
                           track.key === 'net-zero' ? 'text-teal-100' : 'text-accent-600'
                         }`}
                       >
-                        Practice Area {trackIndex + 1}
+                        Panel {trackIndex + 1}
                       </span>
                       <h4
                         className={`mt-2 text-2xl md:text-3xl font-extrabold ${

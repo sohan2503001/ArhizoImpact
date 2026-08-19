@@ -57,7 +57,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-lg md:text-xl text-beige-50 mb-10 leading-relaxed font-light max-w-2xl"
           >
-            We help NGOs, CSR programs, and government initiatives design and implement sustainable livelihood and enterprise development solutions - while also driving ESG and net zero strategy for organizations committed to climate action.
+            We help NGOs, CSR programs, and government initiatives design and implement sustainable livelihood and enterprise development solutions — while also driving ESG and net zero strategy for organizations committed to climate action.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">

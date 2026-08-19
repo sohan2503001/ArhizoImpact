@@ -2,6 +2,8 @@ import { Mail, Phone, MapPin, CheckCircle, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import Reveal from './Reveal';
 
+const gmailComposeUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=arhizoimpact@gmail.com';
+
 const Contact = () => {
   const [status, setStatus] = useState('idle'); // idle, loading, success
 
@@ -58,7 +60,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-accent-400 mt-1 shrink-0" aria-hidden="true" />
                     <div className="ml-4">
                       <p className="font-semibold text-white">Email</p>
-                      <a href="mailto:arhizoimpact@gmail.com" className="text-primary-100 hover:text-white transition-colors" aria-label="Email arhizoimpact@gmail.com">
+                      <a href={gmailComposeUrl} target="_blank" rel="noreferrer" className="text-primary-100 hover:text-white transition-colors" aria-label="Email arhizoimpact@gmail.com">
                         arhizoimpact@gmail.com
                       </a>
                     </div>
