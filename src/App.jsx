@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import SectorOverview from './components/SectorOverview';
 import WhatIDo from './components/WhatIDo';
 import ImpactSnapshot from './components/ImpactSnapshot';
 import AboutMe from './components/AboutMe';
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <SectorOverview />
         <WhatIDo />
         <ImpactSnapshot />
         <AboutMe />

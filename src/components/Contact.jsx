@@ -1,7 +1,24 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle, Loader2 } from 'lucide-react';
+import { useState } from 'react';
 import Reveal from './Reveal';
 
 const Contact = () => {
+  const [status, setStatus] = useState('idle'); // idle, loading, success
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    setTimeout(() => {
+      setStatus('success');
+      e.target.reset();
+      
+      // Reset back to idle after 4 seconds
+      setTimeout(() => {
+        setStatus('idle');
+      }, 4000);
+    }, 1500);
+  };
+
   return (
     <section id="contact" className="py-24 bg-beige-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +37,7 @@ const Contact = () => {
                 
                 <div className="space-y-8">
                   <div className="flex items-start">
-                    <MapPin className="w-6 h-6 text-accent-400 mt-1 shrink-0" />
+                    <MapPin className="w-6 h-6 text-accent-400 mt-1 shrink-0" aria-hidden="true" />
                     <div className="ml-4">
                       <p className="font-semibold text-white">Location</p>
                       <p className="text-primary-100">Mumbai, Maharashtra, India</p>
@@ -28,20 +45,20 @@ const Contact = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <Phone className="w-6 h-6 text-accent-400 mt-1 shrink-0" />
+                    <Phone className="w-6 h-6 text-accent-400 mt-1 shrink-0" aria-hidden="true" />
                     <div className="ml-4">
                       <p className="font-semibold text-white">Phone</p>
-                      <a href="tel:+917447662127" className="text-primary-100 hover:text-white transition-colors">
+                      <a href="tel:+917447662127" className="text-primary-100 hover:text-white transition-colors" aria-label="Call +91 74476 62127">
                         +91 74476 62127
                       </a>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <Mail className="w-6 h-6 text-accent-400 mt-1 shrink-0" />
+                    <Mail className="w-6 h-6 text-accent-400 mt-1 shrink-0" aria-hidden="true" />
                     <div className="ml-4">
                       <p className="font-semibold text-white">Email</p>
-                      <a href="mailto:arhizoimpact@gmail.com" className="text-primary-100 hover:text-white transition-colors">
+                      <a href="mailto:arhizoimpact@gmail.com" className="text-primary-100 hover:text-white transition-colors" aria-label="Email arhizoimpact@gmail.com">
                         arhizoimpact@gmail.com
                       </a>
                     </div>
@@ -58,13 +75,14 @@ const Contact = () => {
             <div className="w-full lg:w-7/12 p-10 md:p-16">
               <h3 className="text-2xl font-bold text-slate-900 mb-8">Send a Message</h3>
               
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                     <input 
                       type="text" 
                       id="name" 
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50 focus:bg-white"
                       placeholder="John Doe"
                     />
@@ -74,6 +92,7 @@ const Contact = () => {
                     <input 
                       type="text" 
                       id="organization" 
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50 focus:bg-white"
                       placeholder="Your NGO / Company"
                     />
@@ -86,6 +105,7 @@ const Contact = () => {
                     <input 
                       type="email" 
                       id="email" 
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50 focus:bg-white"
                       placeholder="john@example.com"
                     />
@@ -106,6 +126,7 @@ const Contact = () => {
                   <textarea 
                     id="message" 
                     rows="4" 
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50 focus:bg-white resize-none"
                     placeholder="Tell me about your project needs..."
                   ></textarea>
@@ -113,9 +134,26 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-primary-600 hover:bg-primary-500 text-white font-medium py-3.5 px-6 rounded-lg transition-all duration-300 shadow-md shadow-primary-600/30 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 hover:-translate-y-0.5 hover:shadow-lg"
+                  disabled={status === 'loading'}
+                  className={`w-full font-medium py-3.5 px-6 rounded-lg transition-all duration-300 shadow-md flex items-center justify-center outline-none focus:ring-2 focus:ring-offset-2 ${
+                    status === 'success' 
+                      ? 'bg-green-600 hover:bg-green-700 text-white shadow-green-600/30 focus:ring-green-600'
+                      : 'bg-primary-600 hover:bg-primary-500 text-white shadow-primary-600/30 focus:ring-primary-600 hover:-translate-y-0.5 hover:shadow-lg'
+                  }`}
                 >
-                  Let's Collaborate
+                  {status === 'loading' ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : status === 'success' ? (
+                    <>
+                      <CheckCircle className="w-5 h-5 mr-2" />
+                      Message Sent!
+                    </>
+                  ) : (
+                    "Let's Collaborate"
+                  )}
                 </button>
               </form>
             </div>

@@ -21,6 +21,7 @@ const AboutMe = () => {
               <img
                 src="/profile.png"
                 alt="Arhizo Impact Consulting team"
+                loading="lazy"
                 className="w-full object-cover aspect-[4/5] object-center transform group-hover:scale-105 transition-transform duration-700"
               />
               {/* Decorative elements */}

@@ -1,6 +1,22 @@
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  };
+
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center min-h-[90vh] overflow-hidden">
       {/* Background Image with Gradient Overlay */}
@@ -8,6 +24,7 @@ const Hero = () => {
         <img
           src="/hero-bg.png"
           alt="Rural enterprise background"
+          loading="lazy"
           className="w-full h-full object-cover scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 to-primary-900/60 blend-multiply"></div>
@@ -18,34 +35,48 @@ const Hero = () => {
       <div className="absolute bottom-10 right-[25%] w-56 h-56 rounded-full bg-primary-500/20 blur-3xl animate-float-delay pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-        <div className="max-w-3xl">
-          <span className="inline-block py-1 px-3 rounded-full bg-accent-500/20 text-accent-400 text-sm font-semibold tracking-wider mb-6 border border-accent-500/30 animate-fade-in-up opacity-0 [animation-delay:0ms] [animation-fill-mode:forwards]">
+        <motion.div 
+          className="max-w-3xl"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.span 
+            variants={itemVariants}
+            className="inline-block py-1 px-3 rounded-full bg-accent-500/20 text-accent-400 text-sm font-semibold tracking-wider mb-6 border border-accent-500/30"
+          >
             ARHIZO IMPACT CONSULTING
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight animate-fade-in-up opacity-0 [animation-delay:150ms] [animation-fill-mode:forwards]">
-            Transforming Livelihoods Through Enterprise, SHG & FPO Development
-          </h1>
-          <p className="text-lg md:text-xl text-beige-50 mb-10 leading-relaxed font-light max-w-2xl animate-fade-in-up opacity-0 [animation-delay:300ms] [animation-fill-mode:forwards]">
-            We support NGOs, CSR programs, and government initiatives in designing and implementing sustainable livelihood and enterprise development solutions for marginalized communities across India.
-          </p>
+          </motion.span>
+          <motion.h1 
+            variants={itemVariants}
+            className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight"
+          >
+            Sustainable Solutions for People and Planet
+          </motion.h1>
+          <motion.p 
+            variants={itemVariants}
+            className="text-lg md:text-xl text-beige-50 mb-10 leading-relaxed font-light max-w-2xl"
+          >
+            We help NGOs, CSR programs, and government initiatives design and implement sustainable livelihood and enterprise development solutions - while also driving ESG and net zero strategy for organizations committed to climate action.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up opacity-0 [animation-delay:450ms] [animation-fill-mode:forwards]">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
             <a
-              href="#contact"
+              href="#livelihoods"
               className="group inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full shadow-lg text-primary-900 bg-accent-400 hover:bg-accent-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-accent-500/40"
             >
-              Work With Us
+              Explore Livelihoods
               <ArrowRight className="ml-2 -mr-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
             </a>
             <a
-              href="#case-studies"
-              className="inline-flex items-center justify-center px-8 py-3.5 border border-white/30 text-base font-medium rounded-full text-white hover:bg-white/10 hover:border-white transition-all duration-300"
+              href="#net-zero"
+              className="group inline-flex items-center justify-center px-8 py-3.5 border border-white/30 text-base font-medium rounded-full text-white hover:bg-white/10 hover:border-white transition-all duration-300"
             >
-              <BookOpen className="mr-2 -ml-1 h-5 w-5 opacity-70" aria-hidden="true" />
-              View Case Studies
+              Explore ESG & Net Zero
+              <ArrowRight className="ml-2 -mr-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

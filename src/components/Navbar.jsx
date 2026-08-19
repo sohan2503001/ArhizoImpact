@@ -1,14 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-
-const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'What I Do', href: '#what-i-do' },
-  { name: 'About', href: '#about' },
-  { name: 'How We Work', href: '#how-we-work' },
-  { name: 'Services', href: '#services' },
-  { name: 'Case Studies', href: '#case-studies' },
-];
+import { NAV_LINKS as navLinks } from '../data/constants';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,11 +36,11 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-primary-900/70 backdrop-blur-sm py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0">
-            <a href="#" className={`font-heading font-bold text-2xl tracking-tight transition-colors ${scrolled ? 'text-primary-600' : 'text-primary-900'}`}>
+            <a href="#home" aria-label="Go to Home" className={`font-heading font-bold text-2xl tracking-tight transition-colors ${scrolled ? 'text-primary-600' : 'text-white'}`}>
               Arhizo <span className="text-accent-500">Impact</span>
             </a>
           </div>
@@ -62,7 +54,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className={`relative font-sans font-medium text-sm transition-colors hover:text-accent-500 pb-1 ${
-                    isActive ? 'text-accent-500' : scrolled ? 'text-slate-700' : 'text-slate-800'
+                    isActive ? 'text-accent-500' : scrolled ? 'text-slate-700' : 'text-white'
                   }`}
                 >
                   {link.name}
@@ -86,7 +78,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`${scrolled ? 'text-slate-700' : 'text-slate-800'} hover:text-primary-600 focus:outline-none transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
+              className={`${scrolled ? 'text-slate-700' : 'text-white'} hover:text-accent-500 focus:outline-none transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
