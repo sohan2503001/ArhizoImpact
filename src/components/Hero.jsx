@@ -91,46 +91,46 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md text-accent-400 text-sm font-semibold tracking-wider mb-6 border border-accent-500/30 shadow-inner">
-              <span className="relative flex h-2.5 w-2.5">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 py-1 px-3.5 rounded-full bg-white/10 backdrop-blur-md text-accent-400 text-xs sm:text-sm font-semibold tracking-wider mb-5 border border-accent-500/30 shadow-inner">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
               </span>
               ARHIZO IMPACT CONSULTING
             </motion.div>
 
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight font-heading"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5 text-white leading-tight font-heading"
             >
               Sustainable Solutions for <span className="text-accent-400 inline-block">People and Planet</span>
             </motion.h1>
 
             <motion.p 
               variants={itemVariants}
-              className="text-lg md:text-xl text-beige-50 mb-10 leading-relaxed font-light max-w-2xl"
+              className="text-sm sm:text-base md:text-lg text-beige-50/90 mb-8 leading-relaxed font-light max-w-2xl"
             >
               We help NGOs, CSR programs, and government initiatives design and implement sustainable livelihood and enterprise development solutions — while also driving ESG and net zero strategy for organizations committed to climate action.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3.5">
               <motion.a
                 href="#livelihoods"
-                whileHover={{ scale: 1.04, y: -2 }}
+                whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full shadow-lg text-primary-900 bg-accent-400 hover:bg-accent-500 hover:text-white transition-colors duration-300 shadow-accent-500/25 hover:shadow-accent-500/40"
+                className="group inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm sm:text-base font-semibold rounded-full shadow-lg text-primary-950 bg-accent-400 hover:bg-accent-500 transition-colors duration-300 shadow-accent-500/25"
               >
                 Explore Livelihoods
-                <ArrowRight className="ml-2 -mr-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                <ArrowRight className="ml-2 -mr-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
               </motion.a>
               <motion.a
                 href="#net-zero"
-                whileHover={{ scale: 1.04, y: -2 }}
+                whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center justify-center px-8 py-3.5 border border-white/30 backdrop-blur-sm text-base font-medium rounded-full text-white hover:bg-white/15 hover:border-white transition-all duration-300"
+                className="group inline-flex items-center justify-center px-6 py-3 border border-white/30 backdrop-blur-sm text-sm sm:text-base font-medium rounded-full text-white hover:bg-white/15 hover:border-white transition-all duration-300"
               >
                 Explore ESG & Net Zero
-                <ArrowRight className="ml-2 -mr-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                <ArrowRight className="ml-2 -mr-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
               </motion.a>
             </motion.div>
           </motion.div>

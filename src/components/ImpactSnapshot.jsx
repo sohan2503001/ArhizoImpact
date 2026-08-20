@@ -73,23 +73,23 @@ const ImpactSnapshot = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-primary-900 border-y border-primary-600/30 overflow-hidden">
+    <section className="relative py-14 sm:py-16 bg-primary-900 border-y border-primary-600/30 overflow-hidden">
       <div className="absolute -top-16 left-[15%] w-64 h-64 rounded-full bg-accent-500/10 blur-3xl animate-float pointer-events-none"></div>
       <div className="absolute -bottom-20 right-[10%] w-72 h-72 rounded-full bg-primary-500/20 blur-3xl animate-float-slow pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 divide-y md:divide-y-0 md:divide-x divide-primary-600/40 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-primary-600/40 text-center">
           {stats.map((stat, index) => (
-            <Reveal key={index} delay={index * 150} className="pt-10 md:pt-0 pb-10 md:pb-0 px-4 flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-primary-600/40 flex items-center justify-center mb-6 text-accent-400 hover:scale-110 hover:bg-primary-600/60 transition-transform duration-300">
-                <stat.icon size={32} strokeWidth={1.5} />
+            <Reveal key={index} delay={index * 150} className="pt-6 md:pt-0 pb-6 md:pb-0 px-4 flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-primary-600/40 flex items-center justify-center mb-4 text-accent-400 hover:scale-110 hover:bg-primary-600/60 transition-transform duration-300">
+                <stat.icon size={24} strokeWidth={1.6} />
               </div>
-              <div className="text-5xl font-extrabold text-white mb-2 font-heading tracking-tight">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-1.5 font-heading tracking-tight">
                 <CountUp end={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-lg font-medium text-beige-100">{stat.label}</p>
+              <p className="text-sm sm:text-base font-medium text-beige-100">{stat.label}</p>
               {stat.sublabel && (
-                <p className="text-sm text-primary-100/70 mt-1">{stat.sublabel}</p>
+                <p className="text-xs text-primary-100/70 mt-0.5">{stat.sublabel}</p>
               )}
             </Reveal>
           ))}

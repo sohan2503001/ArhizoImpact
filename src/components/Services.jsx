@@ -7,21 +7,21 @@ const Services = () => {
     <section id="livelihoods" className="py-24 bg-beige-50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-primary-600 font-bold uppercase tracking-wider text-sm mb-2">Detailed Approach</h2>
-          <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Comprehensive Services</h3>
-          <div className="w-20 h-1 bg-accent-500 mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600">
+          <h2 className="text-primary-600 font-bold uppercase tracking-wider text-xs px-3 py-1 bg-primary-50 rounded-full inline-block mb-3 border border-primary-100">Detailed Approach</h2>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 font-heading">Comprehensive Services</h3>
+          <div className="w-16 h-1 bg-accent-500 mx-auto rounded-full mb-4"></div>
+          <p className="text-sm sm:text-base text-slate-600">
             Two connected practice areas, one on-ground, outcomes-first approach.
           </p>
         </Reveal>
 
-        <div className="space-y-16">
+        <div className="space-y-12">
           {tracks.map((track, trackIndex) => (
             <div
               key={track.key}
               className={
                 track.key === 'net-zero'
-                  ? 'relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 overflow-hidden bg-gradient-to-br from-primary-900 via-primary-600 to-teal-500'
+                  ? 'relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-10 overflow-hidden bg-gradient-to-br from-primary-900 via-primary-600 to-teal-600 rounded-3xl'
                   : ''
               }
             >
@@ -29,22 +29,22 @@ const Services = () => {
                 <div className="absolute inset-0 opacity-15 bg-[linear-gradient(135deg,rgba(255,255,255,0.18)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.18)_50%,rgba(255,255,255,0.18)_75%,transparent_75%,transparent)] bg-[length:30px_30px]"></div>
               )}
               <div className="relative">
-                <Reveal className="mb-8">
+                <Reveal className="mb-6">
                   <div
-                    className={`flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 border-b pb-5 ${
+                    className={`flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 border-b pb-4 ${
                       track.key === 'net-zero' ? 'border-white/20' : 'border-slate-200'
                     }`}
                   >
                     <div>
                       <span
-                        className={`text-sm font-bold uppercase tracking-wider ${
+                        className={`text-xs font-bold uppercase tracking-wider ${
                           track.key === 'net-zero' ? 'text-teal-100' : 'text-accent-600'
                         }`}
                       >
                         Panel {trackIndex + 1}
                       </span>
                       <h4
-                        className={`mt-2 text-2xl md:text-3xl font-extrabold ${
+                        className={`mt-1 text-xl sm:text-2xl font-extrabold font-heading ${
                           track.key === 'net-zero' ? 'text-white' : 'text-slate-900'
                         }`}
                       >
@@ -52,8 +52,8 @@ const Services = () => {
                       </h4>
                     </div>
                     <a
-                      href={`#${track.key}`}
-                      className={`inline-flex items-center text-sm font-semibold transition-colors ${
+                      href={track.key === 'net-zero' ? '#net-zero' : '#overview'}
+                      className={`inline-flex items-center text-xs sm:text-sm font-semibold transition-colors ${
                         track.key === 'net-zero'
                           ? 'text-teal-50 hover:text-white'
                           : 'text-primary-600 hover:text-primary-500'
@@ -64,30 +64,30 @@ const Services = () => {
                   </div>
                 </Reveal>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                   {track.services.map((item, index) => (
-                    <Reveal key={item.title} delay={index * 90} direction="up">
+                    <Reveal key={item.title} delay={index * 80} direction="up">
                       <motion.div
-                        whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
-                        className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary-900/10 transition-all duration-300 border border-slate-100 hover:border-primary-300 h-full flex flex-col justify-between"
+                        whileHover={{ y: -5, transition: { duration: 0.25, ease: 'easeOut' } }}
+                        className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary-900/10 transition-all duration-300 border border-slate-100 hover:border-primary-300 h-full flex flex-col justify-between"
                       >
                         <div>
-                          <div className="relative h-48 bg-gradient-to-b from-beige-100/70 to-beige-50 flex items-center justify-center overflow-hidden p-6">
+                          <div className="relative h-40 bg-gradient-to-b from-beige-100/70 to-beige-50 flex items-center justify-center overflow-hidden p-5">
                             <img
                               src={item.image}
                               alt=""
                               loading="lazy"
-                              className="h-full w-auto object-contain transform group-hover:scale-108 transition-transform duration-500"
+                              className="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
                             />
-                            <div className={`absolute top-4 left-4 w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center shadow-md transform group-hover:scale-115 group-hover:-rotate-6 transition-transform duration-300`}>
-                              <item.icon size={22} />
+                            <div className={`absolute top-3.5 left-3.5 w-10 h-10 rounded-xl ${item.color} flex items-center justify-center shadow-md transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300`}>
+                              <item.icon size={20} />
                             </div>
                           </div>
-                          <div className="p-8 lg:p-10">
-                            <h5 className="font-heading text-2xl font-bold text-slate-900 mb-4 group-hover:text-primary-600 transition-colors">
+                          <div className="p-6 sm:p-8">
+                            <h5 className="font-heading text-lg sm:text-xl font-bold text-slate-900 mb-2.5 group-hover:text-primary-600 transition-colors">
                               {item.title}
                             </h5>
-                            <p className="text-slate-600 leading-relaxed text-lg">
+                            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                               {item.description}
                             </p>
                           </div>

@@ -14,7 +14,7 @@ import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
-    <div className="font-sans bg-beige-50 text-slate-800 min-h-screen selection:bg-accent-400 selection:text-primary-950">
+    <div className="font-sans bg-beige-50 text-slate-800 min-h-screen selection:bg-accent-400 selection:text-primary-950 overflow-x-hidden w-full">
       <ScrollProgress />
       <Navbar />
       <main>

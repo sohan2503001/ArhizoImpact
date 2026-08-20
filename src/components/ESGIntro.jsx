@@ -35,41 +35,41 @@ const ESGIntro = () => {
         <div className="grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-center">
           <Reveal direction="right">
             <div>
-              <span className="inline-block py-1 px-3 rounded-full bg-white/10 text-teal-200 text-xs font-bold tracking-wider uppercase mb-4 border border-white/20">
+              <span className="inline-block py-1 px-3 rounded-full bg-white/10 text-teal-200 text-xs font-bold tracking-wider uppercase mb-3 border border-white/20">
                 Climate & Sustainability Practice
               </span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 text-balance font-heading leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4 text-balance font-heading leading-tight">
                 Driving Net Zero, One Roadmap at a Time
               </h2>
-              <p className="text-lg text-teal-50 leading-relaxed mb-8 font-light">
+              <p className="text-sm sm:text-base text-teal-50/90 leading-relaxed mb-6 font-light">
                 We work with organizations to measure their carbon footprint, design actionable net zero strategies, and build the reporting frameworks needed to meet ESG commitments — grounded in the same on-ground rigor we bring to community development.
               </p>
               
-              <div className="grid sm:grid-cols-3 gap-4 mb-10">
+              <div className="grid sm:grid-cols-3 gap-3 mb-8">
                 {highlights.map((item, idx) => (
                   <motion.div
                     key={item.label}
-                    whileHover={{ y: -4, scale: 1.03 }}
+                    whileHover={{ y: -3, scale: 1.02 }}
                     transition={{ duration: 0.2 }}
-                    className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-4 text-white hover:bg-white/15 hover:border-accent-400/50 transition-all duration-300 shadow-lg"
+                    className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-3.5 text-white hover:bg-white/15 hover:border-accent-400/50 transition-all duration-300 shadow-md"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-teal-400/20 text-teal-200 flex items-center justify-center mb-3">
-                      <item.icon className="w-5 h-5" aria-hidden="true" />
+                    <div className="w-8 h-8 rounded-lg bg-teal-400/20 text-teal-200 flex items-center justify-center mb-2.5">
+                      <item.icon className="w-4 h-4" aria-hidden="true" />
                     </div>
-                    <p className="text-sm font-bold leading-snug font-heading mb-1">{item.label}</p>
-                    <p className="text-xs text-teal-100/70">{item.desc}</p>
+                    <p className="text-xs sm:text-sm font-bold leading-snug font-heading mb-1">{item.label}</p>
+                    <p className="text-[11px] text-teal-100/70">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
 
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center font-bold text-primary-950 bg-accent-400 hover:bg-accent-500 rounded-full px-8 py-3.5 shadow-xl shadow-primary-950/30 transition-colors"
+                className="inline-flex items-center font-bold text-primary-950 bg-accent-400 hover:bg-accent-500 rounded-full px-6 py-3 text-sm sm:text-base shadow-xl shadow-primary-950/30 transition-colors"
               >
                 Discuss ESG Work
-                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </motion.a>
             </div>
           </Reveal>

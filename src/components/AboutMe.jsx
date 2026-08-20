@@ -13,19 +13,19 @@ const AboutMe = () => {
   return (
     <section id="about" className="py-24 bg-beige-50/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-3xl mx-auto text-center mb-12">
+        <Reveal className="max-w-3xl mx-auto text-center mb-10">
           <span className="text-primary-600 font-bold uppercase tracking-wider text-xs px-3 py-1 bg-primary-100/60 rounded-full mb-3 inline-block border border-primary-200">
             About Us
           </span>
-          <h3 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 text-balance font-heading">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 text-balance font-heading">
             A team building solutions that hold up in the field, not just on paper.
           </h3>
-          <div className="w-20 h-1 bg-accent-500 mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-accent-500 mx-auto rounded-full"></div>
         </Reveal>
 
         <Reveal delay={120} className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 mb-10">
-            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl shadow-slate-200/50 border border-slate-100 mb-8">
+            <div className="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed">
               <p>
                 We are a professional team from <strong className="text-slate-900 font-semibold">TISS and IIT</strong>, working with experienced practitioners across the social impact and sustainability sectors. Our backgrounds span engineering, enterprise development, and environmental sustainability — brought together around a shared focus: building solutions that hold up in the field, not just on paper.
               </p>
@@ -37,8 +37,8 @@ const AboutMe = () => {
               </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
-              <p className="text-base text-slate-600">
+            <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+              <p className="text-xs sm:text-sm text-slate-600">
                 <span className="font-bold text-slate-900">Who we work with:</span> NGOs, CSR teams, government departments, and industries/offices.
               </p>
             </div>
