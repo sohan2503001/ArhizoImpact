@@ -1,9 +1,10 @@
 import { TRACKS as tracks } from '../data/constants';
+import { motion } from 'framer-motion';
 import Reveal from './Reveal';
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-beige-50">
+    <section id="livelihoods" className="py-24 bg-beige-50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-primary-600 font-bold uppercase tracking-wider text-sm mb-2">Detailed Approach</h2>
@@ -65,28 +66,33 @@ const Services = () => {
 
                 <div className="grid md:grid-cols-2 gap-8">
                   {track.services.map((item, index) => (
-                    <Reveal key={item.title} delay={index * 80}>
-                      <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-primary-200 h-full">
-                        <div className="relative h-44 bg-beige-50 flex items-center justify-center overflow-hidden p-5">
-                          <img
-                            src={item.image}
-                            alt=""
-                            loading="lazy"
-                            className="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className={`absolute top-4 left-4 w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center shadow-sm transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300`}>
-                            <item.icon size={22} />
+                    <Reveal key={item.title} delay={index * 90} direction="up">
+                      <motion.div
+                        whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
+                        className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary-900/10 transition-all duration-300 border border-slate-100 hover:border-primary-300 h-full flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="relative h-48 bg-gradient-to-b from-beige-100/70 to-beige-50 flex items-center justify-center overflow-hidden p-6">
+                            <img
+                              src={item.image}
+                              alt=""
+                              loading="lazy"
+                              className="h-full w-auto object-contain transform group-hover:scale-108 transition-transform duration-500"
+                            />
+                            <div className={`absolute top-4 left-4 w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center shadow-md transform group-hover:scale-115 group-hover:-rotate-6 transition-transform duration-300`}>
+                              <item.icon size={22} />
+                            </div>
+                          </div>
+                          <div className="p-8 lg:p-10">
+                            <h5 className="font-heading text-2xl font-bold text-slate-900 mb-4 group-hover:text-primary-600 transition-colors">
+                              {item.title}
+                            </h5>
+                            <p className="text-slate-600 leading-relaxed text-lg">
+                              {item.description}
+                            </p>
                           </div>
                         </div>
-                        <div className="p-8 lg:p-10">
-                          <h5 className="font-heading text-2xl font-bold text-slate-900 mb-4">
-                            {item.title}
-                          </h5>
-                          <p className="text-slate-600 leading-relaxed text-lg">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
+                      </motion.div>
                     </Reveal>
                   ))}
                 </div>

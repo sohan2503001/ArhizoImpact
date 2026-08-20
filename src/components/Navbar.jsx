@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS as navLinks } from '../data/constants';
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -28,7 +29,7 @@ const Navbar = () => {
           }
         });
       },
-      { rootMargin: '-40% 0px -55% 0px' }
+      { rootMargin: '-30% 0px -60% 0px' }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -36,13 +37,30 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-primary-900/70 backdrop-blur-sm py-5'}`}>
+    <motion.nav 
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-slate-900/5 py-3.5 border-b border-slate-100' 
+          : 'bg-primary-950/75 backdrop-blur-sm py-5 border-b border-white/10'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0">
-            <a href="#home" aria-label="Go to Home" className={`font-heading font-bold text-2xl tracking-tight transition-colors ${scrolled ? 'text-primary-600' : 'text-white'}`}>
+            <motion.a 
+              href="#home" 
+              aria-label="Go to Home" 
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className={`font-heading font-bold text-2xl tracking-tight transition-colors inline-block ${
+                scrolled ? 'text-primary-600' : 'text-white'
+              }`}
+            >
               Arhizo <span className="text-accent-500">Impact</span>
-            </a>
+            </motion.a>
           </div>
 
           {/* Desktop Menu */}
@@ -50,58 +68,92 @@ const Navbar = () => {
             {navLinks.map((link) => {
               const isActive = activeSection === link.href;
               return (
-                <a
+                <motion.a
                   key={link.name}
                   href={link.href}
+                  onClick={() => setActiveSection(link.href)}
+                  whileHover={{ y: -1 }}
                   className={`relative font-sans font-medium text-xs lg:text-sm transition-colors hover:text-accent-500 pb-1 whitespace-nowrap ${
-                    isActive ? 'text-accent-500' : scrolled ? 'text-slate-700' : 'text-white'
+                    isActive ? 'text-accent-500 font-semibold' : scrolled ? 'text-slate-700' : 'text-white'
                   }`}
                 >
                   {link.name}
-                  <span
-                    className={`absolute left-0 -bottom-0.5 h-0.5 rounded-full bg-accent-500 transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0'
-                    }`}
-                  ></span>
-                </a>
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavIndicator"
+                      className="absolute left-0 -bottom-0.5 w-full h-0.5 rounded-full bg-accent-500"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                </motion.a>
               );
             })}
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="ml-2 px-4 py-2 rounded-full bg-accent-400 text-primary-950 text-xs font-bold uppercase tracking-wider hover:bg-accent-500 transition-colors shadow-md shadow-accent-500/20"
+            >
+              Let's Talk
+            </motion.a>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            <button
+            <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className={`${scrolled ? 'text-slate-700' : 'text-white'} hover:text-accent-500 focus:outline-none transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
+              whileTap={{ scale: 0.9 }}
+              className={`${scrolled ? 'text-slate-700' : 'text-white'} hover:text-accent-500 focus:outline-none p-1`}
+              aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden bg-white shadow-lg absolute w-full left-0 top-full overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-[28rem] pb-4 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-4 pt-2 space-y-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`block px-3 py-3 rounded-md text-base font-medium hover:text-primary-600 hover:bg-beige-50 transition-colors ${
-                activeSection === link.href ? 'text-primary-600 bg-beige-50' : 'text-slate-800'
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-      </div>
-    </nav>
+      {/* Mobile Menu with AnimatePresence */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden bg-white/98 backdrop-blur-lg border-b border-slate-200 shadow-xl overflow-hidden"
+          >
+            <div className="px-4 pt-3 pb-6 space-y-1">
+              {navLinks.map((link, idx) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.04 }}
+                  className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
+                    activeSection === link.href 
+                      ? 'text-primary-600 bg-primary-50/80 font-bold' 
+                      : 'text-slate-800 hover:text-primary-600 hover:bg-beige-50'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+              <div className="pt-2">
+                <a
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center w-full py-3 rounded-xl bg-primary-600 text-white font-bold hover:bg-accent-500 hover:text-primary-950 transition-colors"
+                >
+                  Get in Touch
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
