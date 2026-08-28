@@ -1,6 +1,7 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 const gmailComposeUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=arhizoimpact@gmail.com';
+const linkedInUrl = 'https://www.linkedin.com/in/arhizo-impact-1a46a8431/';
 
 const Footer = () => {
   return (
@@ -31,10 +32,6 @@ const Footer = () => {
                 <Mail className="w-4 h-4 text-accent-500 shrink-0" aria-hidden="true" />
                 arhizoimpact@gmail.com
               </a>
-              <a href="tel:+917447662127" className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors">
-                <Phone className="w-4 h-4 text-accent-500 shrink-0" aria-hidden="true" />
-                +91 74476 62127
-              </a>
               <div className="flex items-center gap-3 text-slate-400">
                 <MapPin className="w-4 h-4 text-accent-500 shrink-0" aria-hidden="true" />
                 Mumbai, Maharashtra, India
@@ -45,10 +42,7 @@ const Footer = () => {
           <div>
             <h2 className="text-white text-sm font-bold uppercase tracking-wider mb-5">Links</h2>
             <div className="flex space-x-4">
-              <a href="#contact" aria-label="Contact" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary-600 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" aria-hidden="true" />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary-600 hover:text-white transition-colors">
+              <a href={linkedInUrl} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-[#0077b5] hover:text-white transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
                 </svg>

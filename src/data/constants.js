@@ -1,6 +1,6 @@
 import {
   Users, Briefcase, TrendingUp, Link as LinkIcon, BarChart,
-  Network, ClipboardCheck, Route, Sun, FileText
+  Network, ClipboardCheck, Route, Sun, FileText, Leaf, Zap
 } from 'lucide-react';
 
 import shgStrengtheningImg from '../assets/illustrations/shg-strengthening.svg';
@@ -16,6 +16,8 @@ import carbonAuditingImg from '../assets/illustrations/carbon-auditing.svg';
 import netZeroStrategyImg from '../assets/illustrations/net-zero-strategy.svg';
 import esgReportingImg from '../assets/illustrations/esg-reporting.svg';
 import renewableEnergyImg from '../assets/illustrations/renewable-energy.svg';
+import afforestationImg from '../assets/illustrations/afforestation.svg';
+import solarEpcImg from '../assets/illustrations/solar-epc.svg';
 
 export const NAV_LINKS = [
   { name: 'Home', href: '#home' },
@@ -114,18 +116,32 @@ export const TRACKS = [
         image: netZeroStrategyImg,
       },
       {
-        title: 'ESG reporting & compliance support',
+        title: 'ESG Reporting & Compliance Support',
         description: 'Building reporting frameworks, disclosure support, and documentation for ESG commitments.',
         icon: FileText,
         color: 'bg-slate-100 text-slate-700',
         image: esgReportingImg,
       },
       {
-        title: 'Renewable energy & resource efficiency planning',
+        title: 'Renewable Energy & Resource Efficiency Planning',
         description: 'Planning solar, energy-efficiency, water, waste, and resource stewardship interventions.',
         icon: Sun,
         color: 'bg-primary-100 text-primary-800',
         image: renewableEnergyImg,
+      },
+      {
+        title: 'Plantation, Afforestation & Urban Forestry Consulting',
+        description: 'Designing science-based afforestation and urban greening programs — from native species selection and Miyawaki dense-forest models to geo-mapped MRV and carbon sequestration documentation aligned with GHG Protocol standards.',
+        icon: Leaf,
+        color: 'bg-green-50 text-green-700',
+        image: afforestationImg,
+      },
+      {
+        title: 'Solar EPC & Advisory',
+        description: 'End-to-end solar project support — from feasibility assessment, system engineering, and procurement to commissioning and O&M — integrated into your decarbonisation roadmap and ESG/BRSR reporting framework.',
+        icon: Zap,
+        color: 'bg-amber-50 text-amber-600',
+        image: solarEpcImg,
       },
     ],
   },
