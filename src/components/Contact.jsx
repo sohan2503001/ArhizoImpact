@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from './Reveal';
 
 const gmailComposeUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=arhizoimpact@gmail.com';
+const MIN_WORDS = 5;
 
 const interestOptions = [
   { value: 'livelihoods', label: 'Livelihoods & Enterprise' },
@@ -20,6 +21,8 @@ const Contact = () => {
     message: '',
   });
   const [selectedInterest, setSelectedInterest] = useState('');
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
   const [statusMessage, setStatusMessage] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -35,13 +38,124 @@ const Contact = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const getWordCount = (text) => {
+    const trimmed = (text || '').trim();
+    if (!trimmed) return 0;
+    return trimmed.split(/\s+/).filter(Boolean).length;
+  };
+
+  const validateField = (name, value) => {
+    let error = '';
+    const trimmed = (value || '').trim();
+
+    switch (name) {
+      case 'name':
+        if (!trimmed) {
+          error = 'Full name is required';
+        } else if (trimmed.length < 2) {
+          error = 'Please enter a valid full name (at least 2 characters)';
+        } else if (/^[^a-zA-Z\s.'-]+$/.test(trimmed)) {
+          error = 'Please enter a valid name with letters';
+        }
+        break;
+
+      case 'organization':
+        if (!trimmed) {
+          error = 'Organization name is required';
+        } else if (trimmed.length < 2) {
+          error = 'Please enter at least 2 characters';
+        }
+        break;
+
+      case 'email':
+        if (!trimmed) {
+          error = 'Email address is required';
+        } else {
+          const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          if (!emailRegex.test(trimmed)) {
+            error = 'Please enter a valid email address (e.g. name@domain.com)';
+          }
+        }
+        break;
+
+      case 'phone':
+        if (trimmed) {
+          const validChars = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]{7,16}$/.test(trimmed);
+          const digitsOnly = trimmed.replace(/\D/g, '');
+          if (!validChars || digitsOnly.length < 10 || digitsOnly.length > 15) {
+            error = 'Please enter a valid 10-digit phone number (e.g. +91 98765 43210)';
+          }
+        }
+        break;
+
+      case 'message': {
+        const words = getWordCount(value);
+        if (!trimmed) {
+          error = 'Message is required';
+        } else if (words < MIN_WORDS) {
+          error = `Please write at least ${MIN_WORDS} words (currently ${words} word${words === 1 ? '' : 's'})`;
+        }
+        break;
+      }
+
+      default:
+        break;
+    }
+
+    return error;
+  };
+
+  const validateAll = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      const err = validateField(key, formData[key]);
+      if (err) newErrors[key] = err;
+    });
+    return newErrors;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (touched[name]) {
+      const error = validateField(name, value);
+      setErrors((prev) => ({ ...prev, [name]: error }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const error = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const allTouched = {
+      name: true,
+      organization: true,
+      email: true,
+      phone: true,
+      message: true,
+    };
+    setTouched(allTouched);
+
+    const validationErrors = validateAll();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setStatus('error');
+      setStatusMessage('Please fix the highlighted errors before submitting.');
+      setTimeout(() => {
+        setStatus('idle');
+        setStatusMessage('');
+      }, 4000);
+      return;
+    }
+
     setStatus('loading');
     setStatusMessage('');
 
@@ -49,13 +163,13 @@ const Contact = () => {
       const selectedInterestLabel = interestOptions.find((o) => o.value === selectedInterest)?.label || 'General Inquiry';
       
       const payload = {
-        name: formData.name,
-        organization: formData.organization,
-        email: formData.email,
-        phone: formData.phone || 'Not provided',
+        name: formData.name.trim(),
+        organization: formData.organization.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim() || 'Not provided',
         interest: selectedInterestLabel,
-        message: formData.message,
-        _subject: `New Collaboration Request from ${formData.name} (${formData.organization || 'Website Inquiry'})`,
+        message: formData.message.trim(),
+        _subject: `New Collaboration Request from ${formData.name.trim()} (${formData.organization.trim() || 'Website Inquiry'})`,
         _template: 'table',
         _captcha: 'false',
       };
@@ -81,6 +195,8 @@ const Contact = () => {
           message: '',
         });
         setSelectedInterest('');
+        setTouched({});
+        setErrors({});
 
         setTimeout(() => {
           setStatus('idle');
@@ -99,6 +215,8 @@ const Contact = () => {
     }
   };
 
+  const messageWordCount = getWordCount(formData.message);
+
   return (
     <section id="contact" className="py-24 bg-beige-50/60 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,7 +225,6 @@ const Contact = () => {
 
             {/* Contact Info Side */}
             <div className="w-full lg:w-5/12 bg-primary-900 text-white p-6 sm:p-10 md:p-16 flex flex-col justify-between relative overflow-hidden">
-              {/* Floating ambient glow */}
               <motion.div
                 animate={{
                   scale: [1, 1.25, 1],
@@ -149,8 +266,6 @@ const Contact = () => {
                     </div>
                   </motion.div>
                   
-
-                  
                   <motion.div 
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
@@ -180,67 +295,119 @@ const Contact = () => {
             <div className="w-full lg:w-7/12 p-6 sm:p-10 md:p-16">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8 font-heading">Send a Message</h3>
               
-              <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
+              <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit} noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">
+                      Full Name <span className="text-red-500">*</span>
+                    </label>
                     <input 
                       type="text" 
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       required
-                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50/50 focus:bg-white"
+                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border outline-none transition-all ${
+                        touched.name && errors.name
+                          ? 'border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-400 focus:border-red-400'
+                          : 'border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-slate-50/50 focus:bg-white'
+                      }`}
                       placeholder="John Doe"
                     />
+                    {touched.name && errors.name && (
+                      <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
                   <div>
-                    <label htmlFor="organization" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">Organization</label>
+                    <label htmlFor="organization" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">
+                      Organization <span className="text-red-500">*</span>
+                    </label>
                     <input 
                       type="text" 
                       id="organization"
                       name="organization"
                       value={formData.organization}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       required
-                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50/50 focus:bg-white"
+                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border outline-none transition-all ${
+                        touched.organization && errors.organization
+                          ? 'border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-400 focus:border-red-400'
+                          : 'border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-slate-50/50 focus:bg-white'
+                      }`}
                       placeholder="Your NGO / Company"
                     />
+                    {touched.organization && errors.organization && (
+                      <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {errors.organization}
+                      </p>
+                    )}
                   </div>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">
+                      Email Address <span className="text-red-500">*</span>
+                    </label>
                     <input 
                       type="email" 
                       id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       required
-                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50/50 focus:bg-white"
+                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border outline-none transition-all ${
+                        touched.email && errors.email
+                          ? 'border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-400 focus:border-red-400'
+                          : 'border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-slate-50/50 focus:bg-white'
+                      }`}
                       placeholder="john@example.com"
                     />
+                    {touched.email && errors.email && (
+                      <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">Phone Number <span className="text-slate-400 font-normal">(optional)</span></label>
+                    <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">
+                      Phone Number <span className="text-slate-400 font-normal">(optional)</span>
+                    </label>
                     <input 
                       type="tel" 
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50/50 focus:bg-white"
-                      placeholder="+91 ...."
+                      onBlur={handleBlur}
+                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl border outline-none transition-all ${
+                        touched.phone && errors.phone
+                          ? 'border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-400 focus:border-red-400'
+                          : 'border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-slate-50/50 focus:bg-white'
+                      }`}
+                      placeholder="+91 98765 43210"
                     />
+                    {touched.phone && errors.phone && (
+                      <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {errors.phone}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 <div className="relative" ref={dropdownRef}>
                   <label id="interest-label" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">
-                    I'm interested in
+                    I'm interested in <span className="text-slate-400 font-normal">(optional)</span>
                   </label>
                   <input type="hidden" name="interest" value={selectedInterest} />
                   
@@ -295,20 +462,44 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-slate-700 mb-1">Message</label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-slate-700">
+                      Message <span className="text-red-500">*</span>
+                    </label>
+                    <span className={`text-[11px] font-medium transition-colors ${
+                      messageWordCount >= MIN_WORDS
+                        ? 'text-emerald-600 font-semibold'
+                        : touched.message && errors.message
+                        ? 'text-red-500 font-semibold'
+                        : 'text-slate-400'
+                    }`}>
+                      {messageWordCount} / {MIN_WORDS} words min {messageWordCount >= MIN_WORDS ? '✓' : ''}
+                    </span>
+                  </div>
                   <textarea 
                     id="message" 
                     name="message"
                     rows="4" 
                     value={formData.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-slate-50/50 focus:bg-white resize-none"
-                    placeholder="Tell us about your project needs..."
+                    className={`w-full px-4 py-3 rounded-xl border outline-none transition-all resize-none ${
+                      touched.message && errors.message
+                        ? 'border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-400 focus:border-red-400'
+                        : 'border-slate-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-slate-50/50 focus:bg-white'
+                    }`}
+                    placeholder="Tell us about your project needs, objectives, or consultation requirements..."
                   ></textarea>
+                  {touched.message && errors.message && (
+                    <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
 
-                {status === 'error' && (
+                {status === 'error' && statusMessage && (
                   <motion.div
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
