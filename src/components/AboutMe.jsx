@@ -1,4 +1,4 @@
-import { CheckCircle2, ArrowRight, Award, Compass, HeartHandshake, ShieldCheck } from 'lucide-react';
+import { Award, Compass, HeartHandshake, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
 
@@ -23,20 +23,13 @@ const AboutMe = () => {
           <div className="w-16 h-1 bg-accent-500 mx-auto rounded-full"></div>
         </Reveal>
 
-        <Reveal delay={120} className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl shadow-slate-200/50 border border-slate-100 mb-8">
-            <div className="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-              <p>
-                We are a professional team from <strong className="text-slate-900 font-semibold">TISS and IIT</strong>, working with experienced practitioners across the social impact and sustainability sectors. Our backgrounds span engineering, enterprise development, and environmental sustainability — brought together around a shared focus: building solutions that hold up in the field, not just on paper.
-              </p>
-              <p>
-                Over the years, we have worked directly with corporates, NGOs, farmer collectives, and government departments — designing livelihood and enterprise programs, running CSR-funded initiatives, and now leading environmental and Net Zero interventions at institutional scale. We work close to the ground: our approach is built on field verification, direct community engagement, and continuous coordination with the institutions and departments we partner with.
-              </p>
-              <p>
-                Today, <strong className="text-slate-900 font-semibold">Arhizo Impact Consulting</strong> works across two connected practice areas — livelihoods and enterprise development, and environmental sustainability / Net Zero consulting — bringing the same on-ground, outcomes-first approach to both.
-              </p>
-            </div>
-
+        <Reveal className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl p-6 sm:p-10 md:p-12 shadow-xl shadow-primary-900/5 border border-slate-100 mb-4">
+            <h4 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 font-heading">Our Core Approach</h4>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+              We operate across two core verticals — livelihoods and enterprise development, and environmental sustainability / Net Zero consulting — bringing the same on-ground, outcomes-first approach to both.
+            </p>
+            
             <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
               <p className="text-xs sm:text-sm text-slate-600">
                 <span className="font-bold text-slate-900">Who we work with:</span> NGOs, CSR teams, government departments, and industries/offices.
@@ -58,18 +51,6 @@ const AboutMe = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
-
-          <div className="text-center">
-            <motion.a
-              href="#services"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center text-primary-600 font-bold hover:text-accent-600 transition-colors gap-2 px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg border border-slate-100"
-            >
-              <span>Learn more about our services</span>
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
           </div>
         </Reveal>
       </div>
