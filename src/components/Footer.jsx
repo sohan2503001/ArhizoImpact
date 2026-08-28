@@ -1,9 +1,19 @@
 import { Mail, MapPin } from 'lucide-react';
+import { useState } from 'react';
+import LegalModal from './LegalModal';
 
 const gmailComposeUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=arhizoimpact@gmail.com';
 const linkedInUrl = 'https://www.linkedin.com/in/arhizo-impact-1a46a8431/';
 
 const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTab, setModalTab] = useState('privacy');
+
+  const openLegalModal = (tab) => {
+    setModalTab(tab);
+    setIsModalOpen(true);
+  };
+
   return (
     <footer className="bg-slate-900 pt-16 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,12 +67,28 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
           <p>&copy; {new Date().getFullYear()} Arhizo Impact Consulting. All rights reserved.</p>
           <div className="mt-4 md:mt-0 space-x-4">
-            <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
+            <button
+              onClick={() => openLegalModal('privacy')}
+              className="hover:text-primary-400 transition-colors focus:outline-none underline-offset-4 hover:underline"
+            >
+              Privacy Policy
+            </button>
             <span>•</span>
-            <a href="#" className="hover:text-primary-400 transition-colors">Terms of Service</a>
+            <button
+              onClick={() => openLegalModal('terms')}
+              className="hover:text-primary-400 transition-colors focus:outline-none underline-offset-4 hover:underline"
+            >
+              Terms of Service
+            </button>
           </div>
         </div>
       </div>
+
+      <LegalModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialTab={modalTab}
+      />
     </footer>
   );
 };
