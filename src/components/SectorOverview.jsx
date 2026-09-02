@@ -7,7 +7,7 @@ const sectors = [
     id: 'livelihoods-card',
     title: 'Livelihoods & Enterprise Development',
     description:
-      'SHG, FPO, and enterprise models that build lasting economic resilience for marginalized communities.',
+      'SHG, FPO, and enterprise models that build lasting economic resilience for communities.',
     icon: Leaf,
     badge: 'Community Resilience',
     accentColor: 'group-hover:border-primary-500',

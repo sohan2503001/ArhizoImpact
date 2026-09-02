@@ -159,7 +159,7 @@ export const CASE_STUDIES = [
     description: 'SHG strengthening and Farmer Producer Company (FPC) formation and capacity building.',
   },
   {
-    title: 'Net Zero Healthy Campus',
+    title: 'Carbon Zero Campus Initiative',
     tag: 'Environmental Interventions',
     description: 'Plantation, solar, rainwater harvesting, composting, and waste management across government institutions.',
   },

@@ -17,9 +17,9 @@ const caseStudyPanels = [
     label: 'ESG & Institutional Net Zero',
     partners: 'State Government • Welfare Institutions',
     description:
-      'On-ground coordination of a large-scale Net Zero Healthy Campus initiative across welfare institutions in partnership with a state government — covering afforestation, rainwater harvesting, solar energy, and waste management.',
+      'On-ground coordination of a large-scale Carbon Zero Campus initiative across welfare institutions in partnership with a state government — covering afforestation, rainwater harvesting, solar energy, and waste management.',
     icon: Building2,
-    badge: 'Healthy Campus Initiative',
+    badge: 'Carbon Zero Campus Initiative',
     accent: 'border-teal-500/30 group-hover:border-teal-500',
     iconBg: 'bg-teal-700',
   },
