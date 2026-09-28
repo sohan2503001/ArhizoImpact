@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arhizo Impact Consulting — Brand & Social Media Asset Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #051E18;
+      --bg-surface: #0A3328;
+      --bg-card: #0E4334;
+      --accent-gold: #E5B869;
+      --accent-emerald: #10B981;
+      --text-white: #FFFFFF;
+      --text-muted: #A7D5C5;
+      --border-subtle: rgba(229, 184, 105, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-white);
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(229, 184, 105, 0.12);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      color: var(--accent-gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    h1 span {
+      color: var(--accent-gold);
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(229, 184, 105, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .platform-tag {
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .preview-box {
+      background: #04140E;
+      border-radius: 14px;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      margin-bottom: 24px;
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-box.light-bg {
+      background: #FBF9F5;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar-preview-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .avatar-preview-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 36px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .avatar-circle-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px dashed rgba(229, 184, 105, 0.7);
+      pointer-events: none;
+      box-shadow: 0 0 0 9999px rgba(4, 20, 14, 0.45);
+    }
+
+    .circle-label {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      font-size: 10px;
+      color: var(--accent-gold);
+      background: rgba(0,0,0,0.7);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .horizontal-logo-img {
+      max-width: 90%;
+      height: auto;
+    }
+
+    .banner-preview-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid rgba(229, 184, 105, 0.3);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-gold);
+      color: #0A3328;
+    }
+
+    .btn-primary:hover {
+      background: #F0C782;
+      box-shadow: 0 4px 15px rgba(229, 184, 105, 0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .full-width-card {
+      grid-column: 1 / -1;
+    }
+
+    .symbolism-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 36px;
+      margin-top: 24px;
+    }
+
+    .symbolism-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .symbol-box {
+      background: rgba(4, 20, 14, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .symbol-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .symbol-box p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10B981;
+      color: #051E18;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="badge">Arhizo Impact Identity Suite</div>
+      <h1>Official Company Logo &amp; <span>Social Media Kit</span></h1>
+      <p class="subtitle">
+        Tailored high-resolution vector logos and social media graphics ready to upload directly to your LinkedIn Company Page, Instagram, WhatsApp Business, and Twitter / X.
+      </p>
+    </header>
+
+    <div class="grid">
+      <!-- 1. SOCIAL PROFILE AVATAR -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Social Media Avatar
+            <span class="platform-tag">LinkedIn &amp; Instagram</span>
+          </div>
+          <p class="card-desc">
+            Optimized for circular &amp; square profile pictures (1080 &times; 1080). Includes safe circular crop alignment.
+          </p>
+        </div>
+
+        <div class="preview-box">
+          <div class="avatar-preview-wrapper">
+            <img src="/arhizo-avatar.svg" alt="Arhizo Social Avatar" id="img-avatar">
+            <div class="avatar-circle-overlay"></div>
+            <div class="circle-label">Circle Crop Preview</div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="downloadPng('/arhizo-avatar.svg', 'arhizo-social-avatar-1080.png', 1080, 1080)">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            Download PNG (1080p)
+          </button>
+          <a class="btn btn-secondary" href="/arhizo-avatar.svg" download="arhizo-social-avatar.svg">
+            SVG Vector
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. ISOLATED BRAND MARK -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Isolated Icon Mark
+            <span class="platform-tag">Transparent</span>
+          </div>
+          <p class="card-desc">
+            Clean symbol with transparent background for watermark usage, video overlays, and app favicons.
+          </p>
+        </div>
+
+        <div class="preview-box">
+          <img src="/arhizo-mark.svg" alt="Arhizo Brand Mark" style="width: 140px; height: 140px;" id="img-mark">
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="downloadPng('/arhizo-mark.svg', 'arhizo-icon-mark.png', 800, 800)">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            Download PNG (800p)
+          </button>
+          <a class="btn btn-secondary" href="/arhizo-mark.svg" download="arhizo-icon-mark.svg">
+            SVG Vector
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. HORIZONTAL LOGO (DARK THEME) -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Full Horizontal Logo (Dark)
+            <span class="platform-tag">Dark Mode</span>
+          </div>
+          <p class="card-desc">
+            White &amp; Champagne Gold typography for dark website navigation, presentations, and digital decks.
+          </p>
+        </div>
+
+        <div class="preview-box">
+          <img src="/arhizo-logo-white.svg" alt="Arhizo Logo White" class="horizontal-logo-img" id="img-logo-white">
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="downloadPng('/arhizo-logo-white.svg', 'arhizo-logo-dark-bg.png', 1800, 360)">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            Download PNG
+          </button>
+          <a class="btn btn-secondary" href="/arhizo-logo-white.svg" download="arhizo-logo-dark-bg.svg">
+            SVG Vector
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. HORIZONTAL LOGO (LIGHT THEME) -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Full Horizontal Logo (Light)
+            <span class="platform-tag">Light Mode</span>
+          </div>
+          <p class="card-desc">
+            Deep Forest Green typography for white letterheads, printed invoices, reports, and contracts.
+          </p>
+        </div>
+
+        <div class="preview-box light-bg">
+          <img src="/arhizo-logo-dark.svg" alt="Arhizo Logo Dark" class="horizontal-logo-img" id="img-logo-dark">
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="downloadPng('/arhizo-logo-dark.svg', 'arhizo-logo-light-bg.png', 1800, 360)">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            Download PNG
+          </button>
+          <a class="btn btn-secondary" href="/arhizo-logo-dark.svg" download="arhizo-logo-light-bg.svg">
+            SVG Vector
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. LINKEDIN COVER BANNER -->
+      <div class="card full-width-card">
+        <div class="card-header">
+          <div class="card-title">
+            LinkedIn Company / Profile Cover Banner (1584 &times; 396)
+            <span class="platform-tag">LinkedIn Official Size</span>
+          </div>
+          <p class="card-desc">
+            Full-width banner featuring company pillars (Livelihoods, ESG &amp; Net Zero, Carbon Zero Campus) with unobstructed layout designed specifically to accommodate LinkedIn profile avatars on the bottom-left.
+          </p>
+        </div>
+
+        <div class="preview-box" style="padding: 16px;">
+          <img src="/arhizo-social-banner.svg" alt="Arhizo LinkedIn Banner" class="banner-preview-img" id="img-banner">
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" style="flex: 2;" onclick="downloadPng('/arhizo-social-banner.svg', 'arhizo-linkedin-banner-1584x396.png', 1584, 396)">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            Download LinkedIn Banner PNG (1584 &times; 396)
+          </button>
+          <a class="btn btn-secondary" href="/arhizo-social-banner.svg" download="arhizo-linkedin-banner.svg">
+            SVG Vector
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYMBOLISM & BRAND MEANING -->
+    <div class="symbolism-section">
+      <div class="badge">Brand Narrative</div>
+      <h2>Design Symbolism &amp; Brand Architecture</h2>
+      <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.95rem;">
+        Every curve in the Arhizo Impact logo tells the story of our dual mission:
+      </p>
+
+      <div class="symbolism-grid">
+        <div class="symbol-box">
+          <h3>1. The Golden Rhizome Roots</h3>
+          <p>
+            Stemming from the botanical definition of "Rhizome" (an underground interconnected root system), the golden base branches and micro-nodes represent community networks, rural enterprise empowerment, and resilient grassroots livelihoods.
+          </p>
+        </div>
+
+        <div class="symbol-box">
+          <h3>2. The Ascending Emerald Leaf</h3>
+          <p>
+            The flourishing dual canopy leaves in vivid emerald and mint reflect environmental stewardship, afforestation, urban forestry, and natural carbon sinks reaching skyward.
+          </p>
+        </div>
+
+        <div class="symbol-box">
+          <h3>3. The Net-Zero Circular Orbit</h3>
+          <p>
+            The dynamic orbital arc and golden sun node encircle the mark, signifying closed-loop circular economy, solar energy, climate balance, and global decarbonization advisory.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Generating high-res PNG download...</div>
+
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2500);
+    }
+
+    async function downloadPng(svgUrl, fileName, width, height) {
+      showToast('Rendering high-res ' + fileName + '...');
+      try {
+        const response = await fetch(svgUrl);
+        const svgText = await response.text();
+        
+        const img = new Image();
+        const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+        const URL = window.URL || window.webkitURL || window;
+        const blobUrl = URL.createObjectURL(svgBlob);
+
+        img.onload = function () {
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          
+          ctx.drawImage(img, 0, 0, width, height);
+          URL.revokeObjectURL(blobUrl);
+
+          canvas.toBlob(function (blob) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = fileName;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            showToast('✓ ' + fileName + ' downloaded successfully!');
+          }, 'image/png');
+        };
+
+        img.src = blobUrl;
+      } catch (err) {
+        console.error('Error rasterizing SVG:', err);
+        showToast('Error generating PNG. Falling back to SVG download.');
+        window.location.href = svgUrl;
+      }
+    }
+  </script>
+</body>
+</html>

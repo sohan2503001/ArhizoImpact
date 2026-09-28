@@ -1,4 +1,4 @@
-import { ArrowRight, GraduationCap, Sparkles } from 'lucide-react';
+import { ArrowRight, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
 

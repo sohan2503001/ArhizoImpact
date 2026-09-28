@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Gold Gradients for light backgrounds -->
+    <linearGradient id="hdGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D49F43" />
+      <stop offset="60%" stop-color="#B87E22" />
+      <stop offset="100%" stop-color="#93641B" />
+    </linearGradient>
+
+    <!-- Emerald Leaf Gradient -->
+    <linearGradient id="hdLeaf" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F4D3C" />
+      <stop offset="50%" stop-color="#147A61" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+
+    <!-- Orbit Arc Gradient -->
+    <linearGradient id="hdOrbit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="70%" stop-color="#0F624D" />
+      <stop offset="100%" stop-color="#0A3328" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Icon Mark (Centered at x=60, y=60) -->
+  <g transform="translate(60, 60)">
+    <!-- Outer Golden Dashed Orbit Ring -->
+    <circle cx="0" cy="0" r="48" stroke="#D49F43" stroke-width="1" stroke-dasharray="3 4" opacity="0.5" />
+    
+    <!-- Net Zero Orbit Arc -->
+    <path d="M -24,24 A 32,32 0 1,1 26,-18" fill="none" stroke="url(#hdOrbit)" stroke-width="2.5" stroke-linecap="round" opacity="0.9" />
+    <circle cx="26" cy="-18" r="3" fill="url(#hdGold)" />
+
+    <!-- Rhizome Root Base -->
+    <path d="M 0,16 C -9,20 -18,24 -24,32 C -16,30 -8,26 -2,20 Z" fill="url(#hdGold)" opacity="0.95" />
+    <path d="M 0,16 C 9,20 18,24 24,32 C 16,30 8,26 2,20 Z" fill="url(#hdGold)" opacity="0.95" />
+    <path d="M -1.5,14 L 1.5,14 L 0.8,34 C 0.5,35 -0.5,35 -0.8,34 Z" fill="url(#hdGold)" opacity="0.9" />
+
+    <!-- Community Nodes -->
+    <circle cx="-24" cy="32" r="2" fill="#B87E22" />
+    <circle cx="24" cy="32" r="2" fill="#B87E22" />
+    <circle cx="0" cy="34" r="1.6" fill="#B87E22" />
+
+    <!-- Central Nexus Ellipse -->
+    <ellipse cx="0" cy="11" rx="6" ry="1.8" fill="none" stroke="url(#hdGold)" stroke-width="1.6" />
+
+    <!-- Ascending Emerald Leaves -->
+    <path d="M -14,10 C -15,0 -8,-10 0,-22 C -2,-12 -2,-2 -5,8 C -8,9 -11,10 -14,10 Z" fill="url(#hdLeaf)" />
+    <path d="M 14,10 C 15,0 8,-10 0,-22 C 2,-12 2,-2 5,8 C 8,9 11,10 14,10 Z" fill="url(#hdLeaf)" opacity="0.9" />
+
+    <!-- Center Line -->
+    <path d="M 0,-20 L 0,10" stroke="#B87E22" stroke-width="1" stroke-linecap="round" opacity="0.8" />
+    <circle cx="0" cy="-23" r="2" fill="url(#hdGold)" />
+  </g>
+
+  <!-- Typography: Deep Emerald Green & Amber Gold for White Backgrounds -->
+  <g transform="translate(130, 0)">
+    <!-- Primary Brand Wordmark -->
+    <text x="0" y="62" font-family="'Outfit', 'Inter', system-ui, sans-serif" font-size="44" font-weight="700" letter-spacing="-0.5" fill="#0A3328">
+      Arhizo <tspan fill="url(#hdGold)" font-weight="700">Impact</tspan>
+    </text>
+
+    <!-- Subtitle Tracked Out -->
+    <text x="2" y="88" font-family="'Inter', system-ui, sans-serif" font-size="15" font-weight="600" letter-spacing="7" fill="#0F624D">
+      CONSULTING
+    </text>
+
+    <!-- Subtle Accent Line -->
+    <line x1="2" y1="98" x2="320" y2="98" stroke="url(#hdGold)" stroke-width="1" opacity="0.35" />
+  </g>
+</svg>

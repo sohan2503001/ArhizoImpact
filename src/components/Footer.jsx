@@ -19,8 +19,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.9fr_0.7fr] mb-12 border-b border-slate-800 pb-12">
           <div>
-            <a href="#home" className="font-heading font-bold text-2xl tracking-tight text-primary-500 block mb-4">
-              Arhizo <span className="text-accent-500">Impact</span> Consulting
+            <a href="#home" className="flex items-center gap-3 font-heading font-bold text-2xl tracking-tight text-primary-500 mb-4 group">
+              <img 
+                src="/arhizo-mark.svg" 
+                alt="Arhizo Impact Logo" 
+                className="w-9 h-9 object-contain transition-transform duration-300 group-hover:rotate-6" 
+              />
+              <span>Arhizo <span className="text-accent-500">Impact</span> Consulting</span>
             </a>
             <p className="text-slate-300 font-light max-w-xl leading-relaxed">
               Transforming livelihoods and driving net zero action — for people, and for the planet.
@@ -80,6 +85,16 @@ const Footer = () => {
             >
               Terms of Service
             </button>
+            <span>•</span>
+            <a
+              href="/brand-kit.html"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-accent-400 text-slate-400 transition-colors underline-offset-4 hover:underline inline-flex items-center gap-1"
+            >
+              <span>Brand &amp; Social Kit</span>
+              <span className="text-[10px] uppercase font-bold bg-accent-500/20 text-accent-400 px-1.5 py-0.5 rounded">NEW</span>
+            </a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Building2, Leaf, CheckCircle, ArrowUpRight } from 'lucide-react';
+import { Building2, Leaf, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
 

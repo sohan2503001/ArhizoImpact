@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Background Gradient for Avatar/Container -->
+    <radialGradient id="bgGrad" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#0F4233" />
+      <stop offset="60%" stop-color="#08251B" />
+      <stop offset="100%" stop-color="#04150E" />
+    </radialGradient>
+
+    <!-- Gold Gradients -->
+    <linearGradient id="goldLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE5B5" />
+      <stop offset="50%" stop-color="#E5B869" />
+      <stop offset="100%" stop-color="#B87E22" />
+    </linearGradient>
+
+    <linearGradient id="goldGleam" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#E5B869" />
+      <stop offset="100%" stop-color="#9A6517" />
+    </linearGradient>
+
+    <!-- Emerald / Nature Gradients -->
+    <linearGradient id="emeraldLeaf" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0B4E3C" />
+      <stop offset="45%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+
+    <linearGradient id="emeraldArc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="50%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+
+    <!-- Outer Golden Ring Gradient -->
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBE2A7" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#E5B869" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#B87E22" stop-opacity="0.5" />
+    </linearGradient>
+
+    <!-- Soft Glow Filter -->
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Circular Outer Accent Rim -->
+  <circle cx="60" cy="60" r="54" stroke="url(#goldRing)" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.7" />
+  <circle cx="60" cy="60" r="50" stroke="url(#goldLinear)" stroke-width="0.8" opacity="0.4" />
+
+  <!-- Net-Zero Orbit Arc (Representing Circular Economy & Solar Action) -->
+  <path d="M 32,74 A 36,36 0 1,1 88,46" fill="none" stroke="url(#emeraldArc)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 0" opacity="0.85" />
+  
+  <!-- Orbit Sun/Carbon Node -->
+  <circle cx="88" cy="46" r="3.2" fill="url(#goldGleam)" filter="url(#subtleGlow)" />
+
+  <!-- The Monogram / Rhizome Structure -->
+  <g transform="translate(0, 1)">
+    <!-- Root Base 1: Left Anchor -->
+    <path d="M 60,70 C 52,73 43,77 38,85 C 45,84 52,80 57,74 Z" fill="url(#goldLinear)" opacity="0.9" />
+    
+    <!-- Root Base 2: Right Anchor -->
+    <path d="M 60,70 C 68,73 77,77 82,85 C 75,84 68,80 63,74 Z" fill="url(#goldLinear)" opacity="0.9" />
+
+    <!-- Root Center Taproot & Node -->
+    <path d="M 58.5,68 L 61.5,68 L 60.8,87 C 60.5,88 59.5,88 59.2,87 Z" fill="url(#goldLinear)" opacity="0.8" />
+    
+    <!-- Interconnected Community Nodes (Livelihood dots) -->
+    <circle cx="38" cy="85" r="2.2" fill="#FCE5B5" />
+    <circle cx="82" cy="85" r="2.2" fill="#FCE5B5" />
+    <circle cx="60" cy="88" r="1.8" fill="#FCE5B5" />
+    
+    <!-- Central Bridge / Nexus Ring (representing 'A' bar & connection) -->
+    <ellipse cx="60" cy="64" rx="7" ry="2.2" fill="none" stroke="url(#goldLinear)" stroke-width="1.8" />
+
+    <!-- Left Ascending Leaf / Pillar (Environmental Protection & Net Zero) -->
+    <path d="M 45,63 C 44,50 51,37 60,25 C 57,36 57,48 54,61 C 51,62.5 48,63 45,63 Z" fill="url(#emeraldLeaf)" />
+    
+    <!-- Right Ascending Leaf / Solar Pillar -->
+    <path d="M 75,63 C 76,50 69,37 60,25 C 63,36 63,48 66,61 C 69,62.5 72,63 75,63 Z" fill="url(#emeraldLeaf)" opacity="0.88" />
+
+    <!-- Central Leaf Spine / Growth Line -->
+    <path d="M 60,27 L 60,63" stroke="#FCE5B5" stroke-width="1.2" stroke-linecap="round" opacity="0.75" />
+
+    <!-- Crown Apex Seed / Golden Spark -->
+    <circle cx="60" cy="24" r="2.2" fill="url(#goldGleam)" />
+  </g>
+</svg>

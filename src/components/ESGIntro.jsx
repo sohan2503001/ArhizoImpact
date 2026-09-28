@@ -46,7 +46,7 @@ const ESGIntro = () => {
               </p>
               
               <div className="grid sm:grid-cols-3 gap-3 mb-8">
-                {highlights.map((item, idx) => (
+                {highlights.map((item) => (
                   <motion.div
                     key={item.label}
                     whileHover={{ y: -3, scale: 1.02 }}

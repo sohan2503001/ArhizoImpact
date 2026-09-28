@@ -1,4 +1,4 @@
-import { X, ShieldCheck, FileText, CheckCircle2, Mail, ExternalLink } from 'lucide-react';
+import { X, ShieldCheck, FileText, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 

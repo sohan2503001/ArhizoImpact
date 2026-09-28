@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, TrendingUp, ShieldCheck, Leaf } from 'lucide-react';
+import { ArrowRight, TrendingUp, ShieldCheck, Leaf } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Hero = () => {

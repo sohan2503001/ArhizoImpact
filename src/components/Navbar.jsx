@@ -53,13 +53,20 @@ const Navbar = () => {
             <motion.a 
               href="#home" 
               aria-label="Go to Home" 
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className={`font-heading font-bold text-2xl tracking-tight transition-colors inline-block ${
-                scrolled ? 'text-primary-600' : 'text-white'
-              }`}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-2.5 group"
             >
-              Arhizo <span className="text-accent-500">Impact</span>
+              <img 
+                src="/arhizo-mark.svg" 
+                alt="Arhizo Impact Logo" 
+                className="w-8 h-8 sm:w-9 sm:h-9 object-contain transition-transform duration-300 group-hover:rotate-6" 
+              />
+              <span className={`font-heading font-bold text-xl sm:text-2xl tracking-tight transition-colors inline-block ${
+                scrolled ? 'text-primary-600' : 'text-white'
+              }`}>
+                Arhizo <span className="text-accent-500">Impact</span>
+              </span>
             </motion.a>
           </div>
 
